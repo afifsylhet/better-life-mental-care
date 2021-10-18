@@ -1,0 +1,11 @@
+.position-relative-own{
+    position: relative;
+}
+
+.position-absolute-own{
+    background-color: rgba(19, 2, 2, 0.342);
+    position:absolute;
+    bottom: 0px;
+    height: auto;
+    text-align: center;
+}

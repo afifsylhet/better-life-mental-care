@@ -10,13 +10,10 @@ function App() {
         <Header></Header>
         <Switch>
           <Route path="/home">
+            <Home></Home>
           </Route>
         </Switch>
       </BrowserRouter>
-
-
-
-      <h1>Hello from home js</h1>
     </div>
   );
 }
