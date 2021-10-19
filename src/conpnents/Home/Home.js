@@ -8,8 +8,6 @@ import useBasicData from "../../hooks/useBasicData";
 const Home = () => {
     const [service] = useBasicData()
 
-    console.log(service)
-
     return (
         <div>
             < Carousel >
