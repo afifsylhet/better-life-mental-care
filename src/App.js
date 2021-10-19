@@ -4,9 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './conpnents/Home/Home';
 import SingleServices from './conpnents/SingleServices/SingleServices';
 import Testimonials from './conpnents/Testimonials/Testimonials';
-import SingleTestimonial from './conpnents/SingleTestimonial/SingleTestimonial';
 import Doctors from './conpnents/Doctors/Doctors';
-import SingleDorctors from './conpnents/SingleDorctors/SingleDorctors';
+import Login from './conpnents/Login/Login';
 
 function App() {
   return (
@@ -28,9 +27,9 @@ function App() {
           </Route>
           <Route path="/doctor">
             <Doctors></Doctors>
-          </Route>
-          <Route path="/doctor/:key">
-            <SingleDorctors></SingleDorctors>
+          </Route>>
+          <Route path="/login">
+            <Login></Login>
           </Route>
         </Switch>
       </BrowserRouter>
