@@ -1,5 +1,5 @@
 import initializeFirebase from "../firebase/firebase.init"
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { useEffect, useState } from "react";
 
 
@@ -8,6 +8,12 @@ initializeFirebase();
 
 
 const useFirebase = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
 
     const [user, setUser] = useState({});
     const [error, setError] = useState("");
@@ -17,25 +23,48 @@ const useFirebase = () => {
     const auth = getAuth();
 
     const signInWithGoogle = () => {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                const user = result.user;
-                setUser(user);
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                setError(errorMessage);
-            });
+        setIsLoading(true)
+        return signInWithPopup(auth, provider)
     }
 
     const handleSignout = () => {
+        setIsLoading(true)
+
         signOut(auth)
             .then(() => {
                 setUser({});
             })
-            .catch((error) => {
+            .finally(() => setIsLoading(false));
+    }
 
-            });
+    const getNameValue = (e) => {
+        const nameValue = e?.target.value;
+        setUserName(nameValue)
+    }
+    const getEmailValue = (e) => {
+        const emailValue = e?.target.value;
+        setEmail(emailValue)
+    }
+    const getPasswordValue = (e) => {
+        const passwordValue = e?.target.value;
+        setPassword(passwordValue)
+    }
+
+
+    const passwordSignIn = () => {
+        setIsLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+
+    }
+
+
+
+    /// kjkskldjklfjlkdjfk
+
+    const signInWithEmail = () => {
+        setIsLoading(true)
+
+        return createUserWithEmailAndPassword(auth, email, password, userName)
     }
 
 
@@ -46,8 +75,12 @@ const useFirebase = () => {
             } else {
                 setUser({})
             }
+            setIsLoading(false);
         })
+
     }, [auth]);
+
+
 
 
     return {
@@ -55,6 +88,15 @@ const useFirebase = () => {
         error,
         signInWithGoogle,
         handleSignout,
+        setError,
+        setUser,
+        setIsLoading,
+        isLoading,
+        signInWithEmail,
+        getNameValue,
+        getEmailValue,
+        getPasswordValue,
+        passwordSignIn
     }
 
 };

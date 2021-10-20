@@ -1,11 +1,17 @@
 
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import useAuth from '../hook/useAuth';
+import useAuth from '../../hooks/useAuth';
+
+
 
 const PrivateRoute = (props) => {
     const { children, ...rest } = props;
-    let { user } = useAuth();
+    let { user, isLoading } = useAuth();
+    if (isLoading) {
+        return <h1 className="text-center mt-5">Loading...</h1>
+    }
+
     return (
         <Route
             {...rest}

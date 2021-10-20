@@ -24,10 +24,10 @@ const Header = () => {
                             navbarScroll
                         >
                             <Nav.Link as={Link} to="/home#home">Home</Nav.Link>
-                            <Nav.Link as={Link} to="/home#about">About</Nav.Link>
+                            <Nav.Link as={Link} to="/about#about">About</Nav.Link>
                             <Nav.Link as={Link} to="/testimonals#testimonals">Testimonals</Nav.Link>
                             <Nav.Link as={Link} to="/doctor#doctors">Doctors</Nav.Link>
-                            <Nav.Link as={Link} to="/home#contact">Contact</Nav.Link>
+                            <Nav.Link as={Link} to="/contact#contact">Contact</Nav.Link>
 
                             <p className="text-white mx-2 mt-2">{user.displayName}</p>
 

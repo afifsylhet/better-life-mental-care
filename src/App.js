@@ -7,6 +7,10 @@ import Testimonials from './conpnents/Testimonials/Testimonials';
 import Doctors from './conpnents/Doctors/Doctors';
 import Login from './conpnents/Login/Login';
 import AuthProvider from './utilities/fakeData/AuthProvider';
+import PrivateRoute from './utilities/fakeData/PrivateRoute';
+import About from './conpnents/About/About';
+import Contact from './conpnents/Contact/Contact';
+import Error from './conpnents/Error/Error';
 
 function App() {
   return (
@@ -21,17 +25,26 @@ function App() {
             <Route path="/home">
               <Home></Home>
             </Route>
-            <Route path="/service/:unid">
+            <Route path="/about">
+              <About></About>
+            </Route>
+            <PrivateRoute path="/service/:unid">
               <SingleServices></SingleServices>
-            </Route>
-            <Route path="/testimonals">
+            </PrivateRoute>
+            <PrivateRoute path="/testimonals">
               <Testimonials></Testimonials>
-            </Route>
+            </PrivateRoute>
             <Route path="/doctor">
               <Doctors></Doctors>
             </Route>>
             <Route path="/login">
               <Login></Login>
+            </Route>
+            <Route path="/contact">
+              <Contact></Contact>
+            </Route>
+            <Route path="*">
+              <Error></Error>
             </Route>
           </Switch>
         </BrowserRouter>
