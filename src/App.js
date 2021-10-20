@@ -6,33 +6,36 @@ import SingleServices from './conpnents/SingleServices/SingleServices';
 import Testimonials from './conpnents/Testimonials/Testimonials';
 import Doctors from './conpnents/Doctors/Doctors';
 import Login from './conpnents/Login/Login';
+import AuthProvider from './utilities/fakeData/AuthProvider';
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Header></Header>
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/home">
-            <Home></Home>
-          </Route>
-          <Route path="/service/:unid">
-            <SingleServices></SingleServices>
-          </Route>
-          <Route path="/testimonals">
-            <Testimonials></Testimonials>
-          </Route>
-          <Route path="/doctor">
-            <Doctors></Doctors>
-          </Route>>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-        </Switch>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/home">
+              <Home></Home>
+            </Route>
+            <Route path="/service/:unid">
+              <SingleServices></SingleServices>
+            </Route>
+            <Route path="/testimonals">
+              <Testimonials></Testimonials>
+            </Route>
+            <Route path="/doctor">
+              <Doctors></Doctors>
+            </Route>>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }

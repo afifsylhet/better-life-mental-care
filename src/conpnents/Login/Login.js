@@ -1,12 +1,11 @@
 import './Login.css'
-import useFirebase from '../../hooks/useFirebase';
-
-
 import React from 'react';
+import useAuth from '../../hooks/useAuth';
+import Button from '@restart/ui/esm/Button';
+
+
 const Login = () => {
-    const { signInWithGoogle } = useFirebase();
-
-
+    const { signInWithGoogle, user } = useAuth();
     return (
         <div>
             <br />
@@ -40,7 +39,6 @@ const Login = () => {
 
 
                 <button className="btn w-100 btn-outline-success fs-3 my-3" onClick={signInWithGoogle}> <span><i class="fab fa-google"></i></span> Sign-in with Google</button>
-
             </div>
 
         </div>

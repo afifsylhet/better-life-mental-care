@@ -1,10 +1,15 @@
 
 
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth'
+
+
 
 const Header = () => {
+    const { user, handleSignout } = useAuth()
     return (
         <div>
 
@@ -24,17 +29,27 @@ const Header = () => {
                             <Nav.Link as={Link} to="/doctor#doctors">Doctors</Nav.Link>
                             <Nav.Link as={Link} to="/home#contact">Contact</Nav.Link>
 
-                            <div className="d-flex">
+                            <p className="text-white mx-2 mt-2">{user.displayName}</p>
+
+
+                            {user.email ? <div>
+                                <Button onClick={handleSignout} variant="outline-light">Logout</Button>
+                            </div> : <div className="d-flex">
                                 <div className="me-3">
-                                    <Button variant="outline-light">Login</Button>
+                                    <NavLink to='/Login'>
+                                        <Button variant="outline-light">Login</Button>
+                                    </NavLink>
                                 </div>
                                 <div className="me-3">
-                                    <Button variant="outline-light">Register</Button>
+
+                                    <NavLink to="/Login">
+                                        <Button variant="outline-light">Register</Button>
+                                    </NavLink>
                                 </div>
-                                <div>
-                                    <Button variant="outline-light">Logout</Button>
-                                </div>
-                            </div>
+
+                            </div>}
+
+
                         </Nav>
 
                     </Navbar.Collapse>
