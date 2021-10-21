@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import useBasicData from '../../hooks/useBasicData';
 
 const SingleDorctors = (props) => {
     const { name, shortDegree, treatField, experience, edu1, edu2, award1, award2, award3, award4, award5, img } = props.doctor;

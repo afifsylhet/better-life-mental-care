@@ -1,6 +1,5 @@
 
 
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
@@ -9,7 +8,9 @@ import { useAuth } from '../../hooks/useAuth'
 
 
 const Header = () => {
-    const { user, handleSignout } = useAuth()
+    const { user, handleSignout } = useAuth();
+    const info = user.email;
+    const newInfo = info?.slice(0, 4);
     return (
         <div>
 
@@ -29,10 +30,10 @@ const Header = () => {
                             <Nav.Link as={Link} to="/doctor#doctors">Doctors</Nav.Link>
                             <Nav.Link as={Link} to="/contact#contact">Contact</Nav.Link>
 
-                            <p className="text-white mx-2 mt-2">{user.displayName}</p>
+                            <p className="text-white mx-2 mt-2">{user.displayName || newInfo}</p>
 
 
-                            {user.email ? <div>
+                            {user.email || newInfo ? <div>
                                 <Button onClick={handleSignout} variant="outline-light">Logout</Button>
                             </div> : <div className="d-flex">
                                 <div className="me-3">
@@ -48,10 +49,7 @@ const Header = () => {
                                 </div>
 
                             </div>}
-
-
                         </Nav>
-
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

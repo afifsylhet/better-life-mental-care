@@ -13,6 +13,7 @@ const useFirebase = () => {
     const [userName, setUserName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [check, setCheck] = useState(false)
 
 
     const [user, setUser] = useState({});
@@ -36,6 +37,10 @@ const useFirebase = () => {
             })
             .finally(() => setIsLoading(false));
     }
+    const checkbox = (e) => {
+        const isCheck = e.target.checked;
+        setCheck(isCheck);
+    }
 
     const getNameValue = (e) => {
         const nameValue = e?.target.value;
@@ -58,8 +63,6 @@ const useFirebase = () => {
     }
 
 
-
-    /// kjkskldjklfjlkdjfk
 
     const signInWithEmail = () => {
         setIsLoading(true)
@@ -96,7 +99,11 @@ const useFirebase = () => {
         getNameValue,
         getEmailValue,
         getPasswordValue,
-        passwordSignIn
+        passwordSignIn,
+        check,
+        checkbox,
+        userName,
+        setUserName,
     }
 
 };

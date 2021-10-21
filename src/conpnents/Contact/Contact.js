@@ -25,7 +25,7 @@ const Contact = () => {
 
                             <div className="mb-3 form-check">
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <label className="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
 
 

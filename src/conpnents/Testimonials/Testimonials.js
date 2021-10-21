@@ -1,7 +1,5 @@
 
-import React, { useDebugValue } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import useBasicData from '../../hooks/useBasicData';
 import useReviews from '../../hooks/useReview';
 import SingleTestimonial from '../SingleTestimonial/SingleTestimonial';
 
